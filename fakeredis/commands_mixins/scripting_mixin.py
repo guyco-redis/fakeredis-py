@@ -164,6 +164,7 @@ class ScriptingCommandsMixin:
         sha1 = hashlib.sha1(script).hexdigest().encode()
         self.script_cache[sha1] = script
         lua_runtime = LuaRuntime(encoding=None, unpack_returned_tuples=True)
+        lua_runtime.require('cjson')
 
         set_globals = lua_runtime.eval(
             """
